@@ -33,7 +33,7 @@
 function queryStringToObject( qstr )
 {
 	var result = {},
-		nvPairs = ( ( qstr || "" ).replace( /^\?/, "" ).split( / & / ) ),
+		nvPairs = ( ( qstr || "" ).replace( /^\?/, "" ).split( /&/ ) ),
 		i, pair, n, v;
 
 	for ( i = 0; i < nvPairs.length; i++ ) {
