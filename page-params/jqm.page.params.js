@@ -39,7 +39,7 @@ function queryStringToObject( qstr )
 	for ( i = 0; i < nvPairs.length; i++ ) {
 		var pstr = nvPairs[ i ];
 		if ( pstr ) {
-			pair = pstr.split( /=/ );
+			pair = pstr.split( /=(.+)/ );
 			n = pair[ 0 ];
 			v = pair[ 1 ];
 			if ( result[ n ] === undefined ) {
