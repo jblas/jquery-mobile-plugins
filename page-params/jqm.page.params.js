@@ -34,12 +34,14 @@ function queryStringToObject( qstr )
 {
 	var result = {},
 		nvPairs = ( ( qstr || "" ).replace( /^\?/, "" ).split( /&/ ) ),
-		i, pair, n, v;
+		i, pair, n, v, idx;
 
 	for ( i = 0; i < nvPairs.length; i++ ) {
 		var pstr = nvPairs[ i ];
 		if ( pstr ) {
-			pair = pstr.split( /=/ );
+		//	pair = pstr.split( /=(.+)/ );
+			idx = pstr.indexOf('=');
+			pair = [pstr.slice(0,idx), pstr.slice(idx+1)];
 			n = pair[ 0 ];
 			v = pair[ 1 ];
 			if ( result[ n ] === undefined ) {
