@@ -71,6 +71,9 @@ function queryStringToObject( qstr )
 // The query params for the embedded page are also added as a property/value
 // object on the options object. You can access it from your page notifications
 // via data.options.pageData.
+
+var firstLoad = true;
+
 $( document ).bind( "pagebeforechange", function( e, data ) {
 
 	// We only want to handle the case where we are being asked
@@ -95,6 +98,13 @@ $( document ).bind( "pagebeforechange", function( e, data ) {
 				data.options.pageData = queryStringToObject( u2.search );
 				data.toPage = u.hrefNoHash + "#" + u2.pathname;
 			}
+		}
+	} else {
+		if (firstLoad) {
+			// First page load, so use a changePage to force through param passing magic"
+			firstLoad = false;
+			$.mobile.changePage(location.hash);
+			e.preventDefault();
 		}
 	}
 });
